@@ -1,63 +1,36 @@
-gsap.registerPlugin(ScrollTrigger);
+const mobileBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileLinks = document.querySelectorAll('.mobile-link');
 
-window.onload = function () {
-    const heroTl = gsap.timeline();
+mobileBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
 
-    heroTl.to(".hero .overlay", {
-        scale: 1,
-        duration: 2.2,
-        ease: "power3.out"
-    })
-        .to(".hero-content", {
-            opacity: 1,
-            y: 0,
-            duration: 1.2,
-            ease: "power2.out"
-        }, "-=1.4");
-    const videosTl = gsap.timeline({
-        scrollTrigger: {
-            trigger: "#videos",
-            start: "top 70%",
-            toggleActions: "play none none reverse"
-        }
+mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
     });
+});
 
-    videosTl.to("#videos .scroll-trigger-element", {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power2.out"
-    });
-    const projectsTl = gsap.timeline({
-        scrollTrigger: {
-            trigger: "#projects",
-            start: "top 70%",
-            toggleActions: "play none none reverse"
-        }
-    });
+// 스크롤 애니메이션 (Intersection Observer)
+const revealElements = document.querySelectorAll('.reveal');
 
-    projectsTl.to("#projects .scroll-trigger-element", {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power2.out"
-    })
-        .to("#projects .project-card", {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.12,
-            ease: "power2.out"
-        }, "-=0.4");
-    gsap.to("#about .scroll-trigger-element", {
-        scrollTrigger: {
-            trigger: "#about",
-            start: "top 70%",
-            toggleActions: "play none none reverse"
-        },
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        ease: "power2.out"
-    });
+const revealOptions = {
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
 };
+
+const revealOnScroll = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target); // 한 번 등장 후 관찰 해제
+    });
+}, revealOptions);
+
+revealElements.forEach(el => {
+    // 첫 화면(Hero)에 있는 요소는 즉시 표시되도록 옵저버 제외
+    if (!el.closest('#hero')) {
+        revealOnScroll.observe(el);
+    }
+});

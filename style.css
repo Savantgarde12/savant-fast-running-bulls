@@ -1,11 +1,95 @@
+/* 커스텀 폰트 (선택사항) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
 body {
     font-family: 'Noto Sans KR', sans-serif;
-    background-color: #050b16;
+    background-color: #0a0a0a;
     color: #ffffff;
     overflow-x: hidden;
 }
+
+/* 첫 섹션 배경 줌아웃 애니메이션 */
+@keyframes zoomOut {
+    0% {
+        transform: scale(1.25);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.hero-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
 .hero-bg {
-    background-image: linear-gradient(rgba(0, 20, 60, 0.25), rgba(5, 11, 22, 0.25)), url(hero.jpg.png);
+    width: 100%;
+    height: 100%;
+    background-image: url('img/hero.png');
     background-size: cover;
-    background-position: center;
+    background-position: left 33% center;
+    animation: zoomOut 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(10, 10, 10, .6) 100%);
+}
+
+/* 스크롤 등장 애니메이션 */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 딜레이 클래스 */
+.delay-100 {
+    transition-delay: 100ms;
+}
+
+.delay-200 {
+    transition-delay: 200ms;
+}
+
+.delay-300 {
+    transition-delay: 300ms;
+}
+
+/* 네비게이션 호버 이펙트 */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
 }

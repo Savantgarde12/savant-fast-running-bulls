@@ -1,230 +1,233 @@
 <!DOCTYPE html>
 <html lang="ko" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Savant's Fast Running Bulls</title>
-    <!-- Google Fonts: Noto Sans KR -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
-        rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
+    <title>Savant's Fast Running Bulls | SFRB</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- GSAP & ScrollTrigger CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ["'Noto Sans KR'", "sans-serif"]
-                    },
-                    colors: {
-                        brand: {
-                            deep: '#050b16',
-                            card: '#0d1730',
-                            accent: '#123f8a',
-                            neon: '#3b82f6'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="style.css">
 </head>
+<body class="antialiased selection:bg-white selection:text-black">
 
-<body class="font-sans antialiased">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-black/60 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#hero" class="text-2xl font-black tracking-tighter hover:text-gray-300 transition-colors">
+                SFRB<span class="text-red-600">.</span>
+            </a>
 
-    <header class="fixed top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-md border-b border-white/10">
-        <nav class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4 md:px-12">
-            <div
-                class="logo text-2xl font-black tracking-wider text-white hover:text-brand-neon transition duration-300 cursor-pointer">
-                SFRB
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
+                <a href="#projects" class="nav-link text-gray-300 hover:text-white transition-colors">PROJECTS</a>
+                <a href="#youtube" class="nav-link text-gray-300 hover:text-white transition-colors">YOUTUBE</a>
+                <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors">ABOUT</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="md:hidden hidden bg-black border-t border-white/10" id="mobile-menu">
+            <div class="flex flex-col px-6 py-4 gap-4 text-sm font-medium tracking-wide">
+                <a href="#projects" class="mobile-link text-gray-300 hover:text-white">PROJECTS</a>
+                <a href="#youtube" class="mobile-link text-gray-300 hover:text-white">YOUTUBE</a>
+                <a href="#about" class="mobile-link text-gray-300 hover:text-white">ABOUT</a>
             </div>
-            <ul class="flex items-center gap-6 md:gap-10 text-sm md:text-base font-medium text-gray-300">
-                <li><a href="#videos" class="hover:text-white transition-colors duration-300">Videos</a></li>
-                <li><a href="#projects" class="hover:text-white transition-colors duration-300">Projects</a></li>
-                <li><a href="#about" class="hover:text-white transition-colors duration-300">About</a></li>
-            </ul>
-        </nav>
+        </div>
     </header>
 
-    <section class="hero relative h-screen w-full flex items-center justify-center overflow-hidden">
-        <div class="overlay hero-bg absolute inset-0 w-full h-full transform scale-[1.5] origin-center"></div>
-
-        <div class="absolute inset-0 bg-gradient-to-t from-brand-deep via-transparent to-black/50 z-10"></div>
-
-        <div class="hero-content relative z-20 text-center px-4 max-w-4xl opacity-0 transform translate-y-10">
-            <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight mb-4 uppercase drop-shadow-lg text-white">
-                Savant's Fast Running Bulls
-            </h1>
-            <p class="text-lg md:text-2xl text-gray-300 mb-8 font-light tracking-widest uppercase">
-                Beyond The Horizon
-            </p>
-
-            <div class="flex gap-6 justify-center items-center">
-                <a href="https://www.youtube.com/@Savantgarde-s4s" target="_blank" aria-label="YouTube Channel"
-                    class="btn w-14 h-14 inline-flex items-center justify-center bg-gradient-to-r from-brand-accent to-blue-600 hover:from-blue-600 hover:to-brand-accent text-white rounded-full shadow-lg shadow-blue-950/50 hover:shadow-blue-500/30 transform hover:-translate-y-1 transition-all duration-300">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.507a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.507 9.388.507 9.388.507s7.517 0 9.388-.507a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                    </svg>
-                </a>
-
-                <a href="https://open.kakao.com/o/gWSb7INg" target="_blank" aria-label="KakaoTalk Open Chat"
-                    class="w-14 h-14 inline-flex items-center justify-center bg-yellow-500 hover:bg-yellow-400 text-black rounded-full shadow-lg transform hover:-translate-y-1 transition-all duration-300">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M12 3c-4.97 0-9 3.185-9 7.112 0 2.53 1.666 4.757 4.195 5.992-.185.642-.667 2.32-.763 2.673-.122.45.155.443.327.327.135-.091 2.146-1.46 2.99-2.036A10.285 10.285 0 0 0 12 17.224c4.97 0 9-3.186 9-7.112C21 6.185 16.97 3 12 3z" />
-                    </svg>
-                </a>
-
-                <a href="https://discord.gg/mGy4ggXBbD" target="_blank" aria-label="Join Discord"
-                    class="w-14 h-14 inline-flex items-center justify-center bg-[#5865F2] hover:bg-[#4752C4] text-white rounded-full shadow-lg transform hover:-translate-y-1 transition-all duration-300">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.094 13.094 0 0 1-1.873-.894.077.077 0 0 1-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 0 1 .077-.011c3.92 1.793 8.18 1.793 12.061 0a.073.073 0 0 1 .078.009c.12.099.246.195.373.289a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.156 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.156 2.418z" />
-                    </svg>
-                </a>
-            </div>
+    <!-- Section 1: Hero -->
+    <section id="hero" class="relative w-full min-h-screen flex items-center justify-center pt-20">
+        <!-- Background with Zoom Animation -->
+        <div class="hero-bg-container">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
         </div>
-    </section>
 
-    <!-- <section id="videos" class="h-screen w-full flex flex-col justify-center px-6 md:px-24 bg-brand-deep relative z-20 border-b border-white/5">
-        <div class="max-w-5xl mx-auto w-full scroll-trigger-element opacity-0 transform translate-y-16">
-            <span class="text-brand-neon font-mono uppercase tracking-widest text-sm block mb-1">01. Media</span>
-            <h2 class="text-3xl md:text-5xl font-extrabold mb-3">Latest Videos</h2>
-            <p class="text-gray-400 text-sm md:text-base max-w-2xl leading-relaxed mb-8">
-                새로운 레이싱 콘텐츠와 고품격 시네마틱 쇼케이스를 감상해보세요.
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto reveal active">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-tight mb-6">
+                Savant's Fast <br class="hidden md:block"/> Running Bulls
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light">
+                차량을 중심으로 한 끝없는 열정.<br/>커뮤니티, 유튜브, 3D 모델링, 그리고 게임 제작까지.
             </p>
             
-            <div class="max-w-2xl mx-auto w-full aspect-video rounded-2xl bg-brand-card border border-white/10 overflow-hidden shadow-2xl relative">
-                <iframe 
-                    class="w-full h-full"
-                    src="https://www.youtube.com/embed/OjbjZcBctuM?autoplay=0&mute=0" 
-                    title="Savant's Fast Running Bulls - Main Video">
-                </iframe>
-            </div>
-            <div class="mt-8 text-center">
-                <a href="https://www.youtube.com/@Savantgarde-s4s" target="_blank" class="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-brand-neon transition-colors duration-300 font-medium">
-                    <span>공식 유튜브 채널 구독하고 새 동영상 소식 받기</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <div class="flex items-center justify-center gap-4">
+                <!-- YouTube Button -->
+                <a href="https://www.youtube.com/@Savantgarde-s4s" target="_blank" rel="noopener noreferrer" 
+                   class="group flex items-center gap-3 bg-white text-black px-6 py-3 rounded-full font-bold hover:bg-gray-200 transition-all duration-300 hover:scale-105">
+                    <svg class="w-5 h-5 group-hover:text-red-600 transition-colors" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </a>
+                
+                <!-- KakaoTalk Button (Placeholder link) -->
+                <a href="https://open.kakao.com/o/gWSb7INg" target="_blank" rel="noopener noreferrer"
+                   class="group flex items-center gap-3 bg-[#FEE500] text-[#000000] px-6 py-3 rounded-full font-bold hover:bg-[#FFEB3B] transition-all duration-300 hover:scale-105">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 3c-5.523 0-10 3.49-10 7.8 0 2.766 1.846 5.174 4.621 6.551l-1.127 3.987c-.1.353.284.62.585.405l4.632-3.076c.414.053.84.083 1.289.083 5.523 0 10-3.49 10-7.8s-4.477-7.8-10-7.8z"/>
+                    </svg>
                 </a>
             </div>
         </div>
-    </section> -->
+    </section>
 
-    <section id="projects"
-        class="h-screen w-full flex flex-col justify-center px-6 md:px-24 bg-[#070e1d] relative z-20 border-b border-white/5">
-        <div class="max-w-5xl mx-auto w-full">
-            <div class="scroll-trigger-element opacity-0 transform translate-y-16 mb-8">
-                <span class="text-brand-neon font-mono uppercase tracking-widest text-sm block mb-1">02. Works</span>
-                <h2 class="text-3xl md:text-5xl font-extrabold">Projects</h2>
+    <!-- Section 2: Projects -->
+    <section id="projects" class="py-24 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16 reveal">
+                <h2 class="text-sm text-gray-500 font-bold tracking-widest mb-2 uppercase">Core Projects</h2>
+                <h3 class="text-3xl md:text-5xl font-black">우리의 4가지 핵심 가치</h3>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full projects-container">
-                <div
-                    class="project-card opacity-0 transform translate-y-10 bg-brand-card/40 rounded-xl border border-white/5 overflow-hidden hover:bg-brand-card/80 hover:border-brand-neon/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-500 cursor-pointer group">
-                    <div class="w-full aspect-[21/9] overflow-hidden bg-gray-800">
-                        <img src="PD.png" alt="[Roblox Vehicle Development]"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Project 1 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-[#111] reveal">
+                    <div class="aspect-w-4 aspect-h-3 overflow-hidden">
+                        <img src="https://placehold.co/800x600/222222/666666?text=Community&font=roboto" alt="Car Community" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100">
                     </div>
-                    <div class="p-4 md:p-5">
-                        <div class="text-[10px] font-mono text-blue-400 mb-1">AUTOMOTIVE ENGINE</div>
-                        <h3 class="text-base md:text-lg font-bold text-white mb-1">Roblox Vehicle Development</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">사랑해요 우리 직원들.</p>
-                    </div>
-                </div>
-
-                <div
-                    class="project-card opacity-0 transform translate-y-10 bg-brand-card/40 rounded-xl border border-white/5 overflow-hidden hover:bg-brand-card/80 hover:border-brand-neon/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-500 cursor-pointer group">
-                    <div class="w-full aspect-[21/9] overflow-hidden bg-gray-800">
-                        <img src="red.png"
-                            alt="[Chassis Tuning]"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100">
-                    </div>
-                    <div class="p-4 md:p-5">
-                        <div class="text-[10px] font-mono text-blue-400 mb-1">PHYSICS ENGINE</div>
-                        <h3 class="text-base md:text-lg font-bold text-white mb-1">Chassis Tuning</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">현실감 넘치는 드라이빙 피드백과 물리 파라미터 세팅.</p>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent flex flex-col justify-end p-6">
+                        <h4 class="text-xl font-bold mb-2">차량 커뮤니티</h4>
+                        <p class="text-sm opacity-0 text-gray-400 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                            차를 사랑하는 사람들이 모여 정보를 공유하고 소통하는 열린 공간입니다.
+                        </p>
                     </div>
                 </div>
 
-                <div
-                    class="project-card opacity-0 transform translate-y-10 bg-brand-card/40 rounded-xl border border-white/5 overflow-hidden hover:bg-brand-card/80 hover:border-brand-neon/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-500 cursor-pointer group">
-                    <div class="w-full aspect-[21/9] overflow-hidden bg-gray-800">
-                        <img src="model.png" alt="[3D Modeling]"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100">
+                <!-- Project 2 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-[#111] reveal delay-100">
+                    <div class="aspect-w-4 aspect-h-3 overflow-hidden">
+                        <img src="img/wayback.png" alt="YouTube Content" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100">
                     </div>
-                    <div class="p-4 md:p-5">
-                        <div class="text-[10px] font-mono text-blue-400 mb-1">CREATIVE DESIGN</div>
-                        <h3 class="text-base md:text-lg font-bold text-white mb-1">3D Modeling</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">디테일 하나 놓치지 않는 하이퍼카 외형.</p>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent flex flex-col justify-end p-6">
+                        <h4 class="text-xl font-bold mb-2">유튜브 콘텐츠</h4>
+                        <p class="text-sm opacity-0 text-gray-400 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                            다이내믹한 주행 영상 등 차와 관련된 모든 것을 우리만의 영상으로 담습니다.
+                        </p>
                     </div>
                 </div>
 
-                <div
-                    class="project-card opacity-0 transform translate-y-10 bg-brand-card/40 rounded-xl border border-white/5 overflow-hidden hover:bg-brand-card/80 hover:border-brand-neon/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-500 cursor-pointer group">
-                    <div class="w-full aspect-[21/9] overflow-hidden bg-gray-800">
-                        <img src="wayback.png" alt="[Racing Cinematics]"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100">
+                <!-- Project 3 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-[#111] reveal delay-200">
+                    <div class="aspect-w-4 aspect-h-3 overflow-hidden">
+                        <img src="img/red.png" alt="3D Modeling" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100">
                     </div>
-                    <div class="p-4 md:p-5">
-                        <div class="text-[10px] font-mono text-blue-400 mb-1">CINEMATIC FILM</div>
-                        <h3 class="text-base md:text-lg font-bold text-white mb-1">Racing Cinematics</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">영화 같은 시퀀스 연출.</p>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent flex flex-col justify-end p-6">
+                        <h4 class="text-xl font-bold mb-2">3D 모델링</h4>
+                        <p class="text-sm opacity-0 text-gray-400 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                            현실의 차량을 가상 세계에 완벽하게 구현하는 하이퀄리티 모델링 작업입니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-[#111] reveal delay-300">
+                    <div class="aspect-w-4 aspect-h-3 overflow-hidden">
+                        <img src="img/PD.png" alt="Game Development" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent flex flex-col justify-end p-6">
+                        <h4 class="text-xl font-bold mb-2">게임 제작</h4>
+                        <p class="text-sm opacity-0 text-gray-400 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                            직접 모델링한 차량으로 짜릿한 드라이빙을 경험할 수 있는 게임을 개발합니다.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="h-screen w-full flex flex-col justify-center px-6 md:px-24 bg-brand-deep relative z-20">
-        <div class="max-w-4xl mx-auto w-full text-center scroll-trigger-element opacity-0 transform translate-y-16">
-            <span class="text-brand-neon font-mono uppercase tracking-widest text-sm block mb-4">03. Biography</span>
-            <h2 class="text-4xl md:text-6xl font-extrabold mb-8">About Channel</h2>
-            <p class="text-gray-300 text-lg md:text-2xl leading-relaxed max-w-3xl mx-auto font-light">
-                <strong class="text-white font-semibold">Savant's Fast Running Bulls</strong>는 속도, 하이퍼카, 그리고 최고의 드라이빙
-                감각을 스크린 위에 시네마틱하게 재현하는 고유의 오토모티브 크리에이티브 공간입니다.
-            </p>
-            <div class="mt-12 flex justify-center gap-6">
-                <a href="https://open.kakao.com/o/gWSb7INg" target="_blank" aria-label="KakaoTalk"
-                    class="w-14 h-14 rounded-full bg-yellow-500 hover:bg-yellow-400 text-black flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg shadow-yellow-500/20">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M12 3c-4.97 0-9 3.185-9 7.112 0 2.53 1.666 4.757 4.195 5.992-.185.642-.667 2.32-.763 2.673-.122.45.155.443.327.327.135-.091 2.146-1.46 2.99-2.036A10.285 10.285 0 0 0 12 17.224c4.97 0 9-3.186 9-7.112C21 6.185 16.97 3 12 3z" />
-                    </svg>
-                </a>
-                <a href="https://discord.gg/mGy4ggXBbD" target="_blank" aria-label="Discord"
-                    class="w-14 h-14 rounded-full bg-[#5865F2] hover:bg-[#4752C4] text-white flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg shadow-indigo-500/20">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.094 13.094 0 0 1-1.873-.894.077.077 0 0 1-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 0 1 .077-.011c3.92 1.793 8.18 1.793 12.061 0a.073.073 0 0 1 .078.009c.12.099.246.195.373.289a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.156 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.156 2.418z" />
-                    </svg>
-                </a>
+    <!-- Section 3: YouTube -->
+    <section id="youtube" class="py-24 bg-[#111]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Text Content -->
+                <div class="w-full lg:w-1/2 reveal">
+                    <h2 class="text-sm text-red-500 font-bold tracking-widest mb-2 uppercase">Official Channel</h2>
+                    <h3 class="text-3xl md:text-5xl font-black mb-6">눈으로 즐기는<br/>엔진의 심장박동</h3>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        Savantgarde-s4s 채널에서는 압도적인 퍼포먼스를 자랑하는 차량들의 리뷰부터, 
+                        우리가 직접 제작하는 3D 모델링 및 레이싱 게임의 개발 과정까지 다채로운 영상을 제공합니다. 
+                        구독하고 가장 빠른 소식을 받아보세요.
+                    </p>
+                    <a href="https://www.youtube.com/@Savantgarde-s4s" target="_blank" class="inline-flex items-center gap-2 border border-white/20 hover:border-white px-8 py-4 rounded-full transition-all hover:bg-white hover:text-black font-semibold">
+                        채널 방문하기
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Video Thumbnail / Image -->
+                <div class="w-full lg:w-1/2 reveal delay-200">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black group">
+                        <img src="https://img.youtube.com/vi/sJafLluMDKY/maxresdefault.jpg" alt="YouTube Thumbnail" class="w-full h-auto transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-colors">
+                            <a href="https://www.youtube.com/@Savantgarde-s4s" target="_blank" class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center shadow-lg shadow-red-600/30 hover:scale-110 transition-transform">
+                                <svg class="w-8 h-8 text-white translate-x-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <footer class="py-12 bg-black border-t border-white/5 relative z-20">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-lg font-bold tracking-wider text-gray-400 hover:text-white transition duration-300">SFRB
+
+    <!-- Section 4: About -->
+    <section id="about" class="py-32 bg-[#0a0a0a] relative overflow-hidden">
+        <!-- Abstract BG Elements -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-6 text-center reveal">
+            <h2 class="text-sm text-gray-500 font-bold tracking-widest mb-2 uppercase">About Us</h2>
+            <h3 class="text-3xl md:text-5xl font-black mb-8">우리는 경계를 넘어<br/>새로운 질주를 만듭니다</h3>
+            
+            <div class="space-y-6 text-gray-400 text-lg font-light leading-relaxed">
+                <p>
+                    Savant's Fast Running Bulls(SFRB)는 단순한 커뮤니티를 넘어, 자동차 문화와 디지털 아트를 결합하는 크리에이티브 그룹입니다.
+                </p>
+                <p>
+                    우리는 오프라인과 온라인, 그리고 가상 세계를 넘나들며 자동차가 주는 본연의 즐거움을 탐구합니다. 정교한 3D 모델링 기술과 창의적인 게임 기획력을 바탕으로, 상상 속의 드라이빙을 현실과 가장 가까운 디지털 경험으로 재창조하고 있습니다.
+                </p>
+                <p class="font-medium text-white mt-8">
+                    우리와 함께 달릴 준비가 되셨나요?
+                </p>
             </div>
-            <p class="text-gray-500 text-sm text-center">© 2026 Savant's Fast Running Bulls. All rights reserved.</p>
-            <div class="flex gap-6 text-sm text-gray-500">
-                <a href="https://open.kakao.com/o/gWSb7INg" target="_blank"
-                    class="hover:text-white transition-colors">카카오톡</a>
-                <a href="https://discord.gg/mGy4ggXBbD" target="_blank"
-                    class="hover:text-white transition-colors">디스코드</a>
-                <a href="https://www.youtube.com/@Savantgarde-s4s" target="_blank"
-                    class="hover:text-white transition-colors">유튜브</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <!-- Brand Info -->
+                <div class="text-center md:text-left">
+                    <div class="text-2xl font-black tracking-tighter mb-2">SFRB<span class="text-red-600">.</span></div>
+                    <p class="text-gray-500 text-sm">Savant's Fast Running Bulls. Car Community & Digital Creations.</p>
+                </div>
+
+                <!-- Links -->
+                <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+                    <a href="#hero" class="hover:text-white transition-colors">Home</a>
+                    <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                    <a href="https://www.youtube.com/@Savantgarde-s4s" target="_blank" class="hover:text-white transition-colors">YouTube</a>
+                    <a href="https://open.kakao.com/o/gWSb7INg" class="hover:text-white transition-colors">KakaoTalk</a>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="mt-12 pt-8 border-t border-white/10 text-center text-xs text-gray-600 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 Savant's Fast Running Bulls. All rights reserved.</p>
+                <!-- <div class="flex gap-4">
+                    <a href="#" class="hover:text-gray-300 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-300 transition-colors">Terms of Service</a>
+                </div> -->
             </div>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
-
 </html>
